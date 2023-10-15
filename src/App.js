@@ -1,7 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect } from "react";
+import socket from "./services/socket/index";
+import { getAllUsers } from "./services/http";
 
 function App() {
+  useEffect(() => {
+    socket.emitChanges({
+      a: "a",
+    });
+    getAllUsers().then((res) => console.log(res));
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
